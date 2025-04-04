@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+
+        nav button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #45a049;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #charts {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        canvas {
+            max-width: 45%;
+            max-height: 400px;
+        }
+
+        #charts canvas {
+            flex: 1 1 45%;
+            max-width: 45%;
+            margin: 20px;
+        }
+
+        #resultsButton {
+            margin-left: auto;
+        }
+
+        #resultsButton:hover {
+            background-color: #45a049;
+        }
+
+        #resultsButton:focus {
+            outline: none;
+        }
+
+        #resultsButton:active {
+            background-color: #3e8e41;
+        }
+
+        #resultsButton:active {
+            transform: translateY(2px);
+        }
+
+        #charts {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        canvas {
+            max-width: 45%;
+            max-height: 300px;
+        }
+
+        #charts canvas {
+            margin: 20px;
+        }
+
+        #resultsButton {
+            margin-left: auto;
+        }
+
+        #resultsButton:hover {
+            background-color: #45a049;
+        }
+
+        #resultsButton:focus {
+            outline: none;
+        }
+
+        #resultsButton:active {
+            background-color: #3e8e41;
+        }
+
+        #resultsButton:active {
+            transform: translateY(2px);
+        }
+
+        #resultsButton:active {
+            transform: translateY(2px);
+        }
+
+        #resultsButton:focus {
+            outline: none;
+        }
+
+        #resultsButton:active {
+            background-color: #3e8e41;
+        }
+
+        #resultsButton:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        #resultsButton:disabled:hover {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus {
+            outline: none;
+        }
+
+        #resultsButton:disabled:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:hover {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus {
+            outline: none;
+        }
+
+        #resultsButton:disabled:hover {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resultsButton:disabled:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active:focus:active {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        #resulttab {
+            margin-top: 2em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #analysisText ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #analysisText li {
+            margin: 0.5em 0;
+            padding: 0.5em;
+            background-color: #e7f3e7;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Report Analysis Dashboard</h1>
+    </header>
+    <nav>
+        <button onclick="window.location.href='dashboard.htm';">Back</button>
+        <button id="resultsButton">Results</button>
+    </nav>
+    <main>
+        <div id="charts">
+            <canvas id="barChart"></canvas>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <section id="resulttab" class="hidden">
+            <h2>Analysis Results</h2>
+            <div id="analysisText"></div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsButton = document.getElementById('resultsButton');
+            const resultTab = document.getElementById('resulttab');
+            const analysisText = document.getElementById('analysisText');
+
+            resultsButton.addEventListener('click', () => {
+                resultTab.classList.toggle('hidden');
+            });
+
+            const barChart = new Chart(document.getElementById('barChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Computer Networks', 'SEAD', 'OS', 'Gen AI'],
+                    datasets: [{
+                        label: 'Scores',
+                        data: [12, 19, 3, 5],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Course Performance'
+                        }
+                    }
+                }
+            });
+
+            const ctx2 = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['A', 'B'],
+                    datasets: [{
+                        label: 'Grade Distribution',
+                        data: [12, 19],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+
+            analysisText.innerHTML = `
+                <ul>
+                    <li>Computer Networks: High performance with consistent results.</li>
+                    <li>SEAD: Shows potential for improvement in future assessments.</li>
+                    <li>OS: Performance is satisfactory, but there is room for improvement.</li>
+                    <li>Gen AI: Excellent performance, leading the group.</li>
+                `;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("Location: login.php");
+    exit();
+}
+?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Online Exam Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #dfe9f3, #f8f9fa);
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            font-size: 24px;
+        }
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+            height: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .sidebar {
+            width: 100%;
+            background-color: #004d40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .sidebar ul li {
+            margin: 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .card {
+            background: #e0f2f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #00796b;
+            transition: transform 0.2s;
+            flex: 1 1 250px;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        button {
+            background: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 2px solid #00796b;
+        }
+        button:hover {
+            background: #608d87;
+        }
+        .card i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Dashboard</h1>
+    </header>
+            <div style="display: flex; justify-content: space-between; width: 100%; padding: 10px;">
+            <button onclick="window.location.href='logout.php'">Logout</button>
+        </div>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h> WELCOME! STUDENT</h>        
+       </div>
+        
+        <main>
+            <section id="register" class="card">
+                <i class="fas fa-edit"></i>
+                <h2>Exam Registration</h2>
+                <p>Register for your Exam.</p>
+                <button onclick="window.location.href='final_registration_page.htm'">Register</button>
+            </section>
+            
+            <section id="payment" class="card">
+                <i class="fas fa-credit-card"></i>
+                <h2>Payment</h2>
+                <p>Complete payment for exams.</p>
+                <button onclick="window.location.href='pp.html'">Proceed to Payment</button>
+            </section>
+            
+            <section id="results" class="card">
+                <i class="fas fa-chart-line"></i>
+                <h2>Results</h2>
+                <p>Check your exam results.</p>
+                <button onclick="window.location.href='results_page.htm'">View Results</button>
+            </section>
+            
+            <section id="report" class="card">
+                <i class="fas fa-file-alt"></i>
+                <h2>Reports & Analysis</h2>
+                <p>View performance insights.</p>
+                <button onclick="window.location.href='result_tab.html'">View Report</button>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
